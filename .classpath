@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/conan-util.jar"/>
+	<classpathentry kind="lib" path="lib/json.jar"/>
+	<classpathentry kind="lib" path="lib/jsoup-1.8.2.jar"/>
+	<classpathentry kind="lib" path="lib/lucene-core-7.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/lucene-queries-7.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/lucene-queryparser-7.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/lucene-suggest-7.3.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
