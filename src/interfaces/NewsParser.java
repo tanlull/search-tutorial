@@ -6,6 +6,8 @@
  */
 package interfaces;
 
+import java.util.ArrayList;
+
 import model.News;
 
 /**
@@ -14,4 +16,5 @@ import model.News;
  */
 public interface NewsParser {
 	public News getNews(String url);
+	public ArrayList<News> getAllNews(String url);
 }
