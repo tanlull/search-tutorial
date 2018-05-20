@@ -30,6 +30,7 @@ import model.News;
  */
 public class ThairathParser implements NewsParser {
 
+	String useragent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:42.0) Gecko/20100101 Firefox/42.0";
 	/* (non-Javadoc)
 	 * @see interfaces.NewsParser#getNews(java.lang.String)
 	 */
@@ -40,7 +41,7 @@ public class ThairathParser implements NewsParser {
 		
 		try {
 			
-			Document doc = Jsoup.connect(url).timeout(5000).get();
+			Document doc = Jsoup.connect(url).timeout(10000).userAgent(useragent).get();
 			
 			String title = doc.select("h1").first().text();
 			String content = doc.select("section[itemprop=articleBody]").first().text();
