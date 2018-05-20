@@ -43,7 +43,7 @@ public class ThairathParser implements NewsParser {
 			Document doc = Jsoup.connect(url).timeout(5000).get();
 			
 			String title = doc.select("h1").first().text();
-			String content = doc.select("section[id=mainContent]").first().text();
+			String content = doc.select("section[itemprop=articleBody]").first().text();
 			
 			
 			//meta property="og:article:published_time" content="2018-05-14T14:05:00+07:00"

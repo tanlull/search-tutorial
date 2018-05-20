@@ -44,7 +44,8 @@ public class MyIndexer {
 		 Directory dir = FSDirectory.open(path);
 		 
 		 /* set analyzer to analyze contents */
-		 Analyzer analyzer=new ThaiAnalyzer();		 
+		 Analyzer analyzer=new ThaiAnalyzer();
+		 
 		 IndexWriterConfig iwc=new IndexWriterConfig(analyzer);
 		 
 		 /* always replace old index */
@@ -53,7 +54,13 @@ public class MyIndexer {
 		
 		
 		 String[] ulist = {
-				 			"https://www.thairath.co.th/lifestyle/tech",
+		 			"https://www.thairath.co.th/lifestyle/tech",
+		 			"https://www.thairath.co.th/lifestyle/auto",
+		 			"https://www.thairath.co.th/lifestyle/woman",
+		 			"https://www.thairath.co.th/lifestyle/tech/technology",
+		 			"https://www.thairath.co.th/lifestyle/tech/review",
+		 			"https://www.thairath.co.th/wongnai",
+		 			"https://www.thairath.co.th/ent",
 				 			
 		 					};
 		 
@@ -63,13 +70,14 @@ public class MyIndexer {
 			 for(News n : nlist) {
 				 
 				 Document d = new Document();
+				 
 				 d.add(new Field("title", n.getTitle(), TextField.TYPE_STORED));
 				 d.add(new Field("content", n.getContent(), TextField.TYPE_STORED));
 				 d.add(new Field("category", n.getCategory(), StringField.TYPE_STORED));
 				 d.add(new Field("url", n.getUrl(), StringField.TYPE_STORED));
 				 d.add(new Field("publisher", n.getPublisher(), StringField.TYPE_STORED));
 				 d.add(new Field("datetime", n.getDatetime()+"", TextField.TYPE_STORED));
-				 d.add(new Field("dtime", new SimpleDateFormat("yyyyMMddhhmm").format(n.getDatetime()), StringField.TYPE_STORED));
+				 d.add(new Field("dtime", new SimpleDateFormat("yyyyMMddHHmm").format(n.getDatetime()), StringField.TYPE_STORED));
 				 
 				 writer.addDocument(d);
 				 
