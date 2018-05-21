@@ -29,6 +29,7 @@ public class WebCollector {
 
 		String url = "http://www.boomerangshop.com/web/index.php/app/product/cate/bluray/category/new_release/page/1";
 		
+		// Jsoup = Collector + parser
 		Document doc = Jsoup.connect(url)
 				.timeout(10000)
 				.userAgent(useragent)
