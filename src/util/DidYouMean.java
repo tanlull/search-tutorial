@@ -36,16 +36,18 @@ public class DidYouMean {
 		try {
 		Path path = FileSystems.getDefault().getPath("index-news");
 		Directory dir = FSDirectory.open(path);
+		
+		// look word / term from "index-news"
 		sp = new SpellChecker(dir);
 
 		IndexWriterConfig config = new IndexWriterConfig(new ThaiAnalyzer());
-		/* use terms from index */
+		/* use terms from index */   //suggestion looks from field content , 
 		sp.indexDictionary(new LuceneDictionary(DirectoryReader.open(dir), "content"),config,true);
 		
-		/* user terms from textfile */
+		/* user terms from textfile */  // incase we have predefined wordlist 
 		//	sp.indexDictionary(new PlainTextDictionary(FileSystems.getDefault().getPath("files/word.list")) , config, true);
 		
-		
+		// High value mean high accuracy searching  
 		sp.setAccuracy(0.6f);
 		
 		}catch(Exception er) {}

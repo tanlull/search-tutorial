@@ -44,11 +44,14 @@ public class MyIndexer {
 		 Directory dir = FSDirectory.open(path);
 		 
 		 /* set analyzer to analyze contents */
+		 // ตัดคำ  ThaiAnalyzer (java blade) or ICU
+		 // Make indices 
 		 Analyzer analyzer=new ThaiAnalyzer();
 		 
 		 IndexWriterConfig iwc=new IndexWriterConfig(analyzer);
 		 
 		 /* always replace old index */
+		 // reindex all 
 		 iwc.setOpenMode(OpenMode.CREATE); 
 		 IndexWriter writer = new IndexWriter(dir,iwc);
 		
@@ -68,12 +71,13 @@ public class MyIndexer {
 		 for(String u : ulist) {
 			 ArrayList<News> nlist = new ThairathParser().getAllNews(u);
 			 for(News n : nlist) {
-				 
+				 // Lucene Document
 				 Document d = new Document();
 				 
-				 d.add(new Field("title", n.getTitle(), TextField.TYPE_STORED));
+				 // Add column & create index 
+				 d.add(new Field("title", n.getTitle(), TextField.TYPE_STORED)); // TextField = Tokenize  -> search
 				 d.add(new Field("content", n.getContent(), TextField.TYPE_STORED));
-				 d.add(new Field("category", n.getCategory(), StringField.TYPE_STORED));
+				 d.add(new Field("category", n.getCategory(), StringField.TYPE_STORED)); // StringField = do not tokenize/search
 				 d.add(new Field("url", n.getUrl(), StringField.TYPE_STORED));
 				 d.add(new Field("publisher", n.getPublisher(), StringField.TYPE_STORED));
 				 d.add(new Field("datetime", n.getDatetime()+"", TextField.TYPE_STORED));
